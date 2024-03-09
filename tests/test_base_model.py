@@ -60,7 +60,8 @@ class TestBaseModel_inst(unittest.TestCase):
     def test_kwargs(self):
         date_time = datetime.now()
         date_iso = date_time.isoformat()
-        basemod = BaseModel(id="546531", created_at=date_iso, updated_at=date_iso)
+        basemod = BaseModel(id="546531", created_at=date_iso,
+                            updated_at=date_iso)
         self.assertEqual(basemod.id, "546531")
         self.assertEqual(basemod.created_at, date_time)
         self.assertEqual(basemod.updated_at, date_time)
@@ -72,7 +73,8 @@ class TestBaseModel_inst(unittest.TestCase):
     def test_with_args_kwargs(self):
         date_time = datetime.now()
         date_iso = date_time.isoformat()
-        basemod = BaseModel("51", id="1321354", created_at=date_iso, updated_at=date_iso)
+        basemod = BaseModel("51", id="1321354",
+                            created_at=date_iso, updated_at=date_iso)
         self.assertEqual(basemod.id, "1321354")
         self.assertEqual(basemod.created_at, date_time)
         self.assertEqual(basemod.updated_at, date_time)
@@ -132,7 +134,6 @@ class TestBaseModel_save(unittest.TestCase):
 
 class TestBaseModel_dict(unittest.TestCase):
     """ test dict """
-
 
     def test_keys(self):
         basemod = BaseModel()
