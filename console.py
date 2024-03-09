@@ -160,21 +160,21 @@ class HBNBCommand(cmd.Cmd):
                 print("** value missing **")
                 return False
         if len(args) == 4:
-            obj = dico["{}.{}".format(args[0], args[1])]
+            obj = object_dic["{}.{}".format(args[0], args[1])]
             if args[2] in obj.__class__.__dict__.keys():
                 valt = type(obj.__class__.__dict__[args[2]])
                 obj.__dict__[args[2]] = valt(args[3])
             else:
                 obj.__dict__[args[2]] = args[3]
-        elif type(eval(args[2])) == obdic:
-            obj = dico["{}.{}".format(args[0], args[1])]
+        elif type(eval(args[2])) == dict:
+            obj = object_dic["{}.{}".format(args[0], args[1])]
             for key, value in eval(args[2]).items():
                 if ((key in obj.__class__.__dict__[key]) and
                     type(obj.__class__.__dict__[key]) in {str, int, float}):
                     valt = type(obj.__class__.__dict__[key])
-                    obj.__dict__[k] = valt(value)
+                    obj.__dict__[key] = valt(value)
                 else:
-                    obj.__dict__[k] = value
+                    obj.__dict__[key] = value
         storage.save()
 
 
