@@ -15,7 +15,7 @@ class BaseModel:
         self.updated_at = datetime.now()
         if kwargs:
             for key, value in kwargs.items():
-                if key == 'created_at' or key == 'updated_at':
+                if key == "created_at" or key == "updated_at":
                     self.__dict__[key] = datetime.\
                                          strptime(value,
                                                   '%Y-%m-%dT%H:%M:%S.%f')
@@ -32,9 +32,9 @@ class BaseModel:
     def to_dict(self):
         """ return a dict with values """
         dictio = self.__dict__.copy()
-        dictio['created_at'] = self.created_at.isoformat()
-        dictio['updated_at'] = self.updated_at.isoformat()
-        dictio['__class__'] = self.__class__.__name__
+        dictio["created_at"] = self.created_at.isoformat()
+        dictio["updated_at"] = self.updated_at.isoformat()
+        dictio["__class__"] = self.__class__.__name__
         return dictio
 
     def __str__(self):
