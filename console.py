@@ -160,13 +160,12 @@ class HBNBCommand(cmd.Cmd):
                 print("** value missing **")
                 return False
         if len(args) == 4:
-            obj = storage.all().get(key)
-            if obj is None:
-                print("** no instance found **")
-                return False
+            obj = storage.all()[key]
+            if args[2] in obj.__class__.__dict__.keys():
+                valt = type(obj.__class__.__dict__[args[2]])
+                obj.__dict__[args[2]] = valt(args[3])
             else:
-                setattr(obj, args[2], args[3])
-                obj.save()
+                obj.__dict__[args[2]] = args[3]
 
 
 if __name__ == '__main__':
