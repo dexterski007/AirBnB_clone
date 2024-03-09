@@ -9,7 +9,7 @@ class BaseModel:
     """ avengers first class, this is the basemodel for the entire stuff """
 
     def __init__(self, *args, **kwargs):
-        """ init function for the basemodel function, args unused + kwargs 
+        """ init function for the basemodel function, args unused + kwargs
         Args; unused
         kwargs: key and value
         """
@@ -43,4 +43,4 @@ class BaseModel:
     def __str__(self):
         """ print function, its the str representation of the basemodel """
         return "[{}] ({}) {}".format(self.__class__.__name__,
-                                       self.id, self.__dict__)
+                                     self.id, self.__dict__)
