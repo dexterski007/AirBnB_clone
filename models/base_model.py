@@ -7,6 +7,7 @@ from uuid import uuid4
 
 class BaseModel:
     """ avengers first class """
+
     def __init__(self, *args, **kwargs):
         """ init function """
         if kwargs:
