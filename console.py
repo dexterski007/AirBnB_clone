@@ -108,6 +108,7 @@ class HBNBCommand(cmd.Cmd):
         cmd_list = {
             "all": self.do_all,
             "count": self.do_count,
+            "show": self.do_show,
         }
         check = re.search(r"\.", arg)
         if check is not None:
