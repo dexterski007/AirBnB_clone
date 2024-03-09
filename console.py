@@ -166,7 +166,7 @@ class HBNBCommand(cmd.Cmd):
                 obj.__dict__[args[2]] = vtype(args[3])
             else:
                 obj.__dict__[args[2]] = args[3]
-        object_dic.save()
+        obj.save()
 
 
 if __name__ == '__main__':
