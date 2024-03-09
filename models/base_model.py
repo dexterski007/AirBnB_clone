@@ -9,7 +9,10 @@ class BaseModel:
     """ avengers first class, this is the basemodel for the entire stuff """
 
     def __init__(self, *args, **kwargs):
-        """ init function for the basemodel function, args unused + kwargs """
+        """ init function for the basemodel function, args unused + kwargs 
+        Args; unused
+        kwargs: key and value
+        """
         self.id = str(uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
