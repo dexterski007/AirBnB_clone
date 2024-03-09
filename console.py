@@ -125,8 +125,8 @@ class HBNBCommand(cmd.Cmd):
         """ count number of instances """
         args = arg.split()
         c = 0
-        for obj in storage.all().values():
-            if args[0] == obj.__class.__name__:
+        for object_dic in storage.all().values():
+            if args[0] == object_dic.__class__.__name__:
                 c += 1
         print(c)
 
