@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Base model """
+""" Base model def """
 import models
 from datetime import datetime
 from uuid import uuid4
@@ -24,11 +24,6 @@ class BaseModel:
         else:
             models.storage.new(self)
 
-    def __str__(self):
-        """ print function """
-        return "[{}] ({}) {}".format(self.__class__.__name__,
-                                       self.id, self.__dict__)
-
     def save(self):
         """ update current time """
         self.updated_at = datetime.now()
@@ -41,3 +36,8 @@ class BaseModel:
         dictio['updated_at'] = self.updated_at.isoformat()
         dictio['__class__'] = self.__class__.__name__
         return dictio
+
+    def __str__(self):
+        """ print function """
+        return "[{}] ({}) {}".format(self.__class__.__name__,
+                                       self.id, self.__dict__)
