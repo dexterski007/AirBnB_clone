@@ -35,6 +35,27 @@ class TestUser_inst(unittest.TestCase):
         self.assertLess(user1.updated_at, user2.updated_at)
 
     def test_str(self):
+        self.assertEqual(str, type(User().id))
+
+    def test_created(self):
+        self.assertEqual(datetime, type(User().created_at))
+
+    def test_updated(self):
+        self.assertEqual(datetime, type(User().updated_at))
+
+    def test_email(self):
+        self.assertEqual(str, type(User.email))
+
+    def test_pass(self):
+        self.assertEqual(str, type(User.password))
+
+    def test_f_name(self):
+        self.assertEqual(str, type(User.first_name))
+
+    def test_l_name(self):
+        self.assertEqual(str, type(User.last_name))
+
+    def test_str(self):
         date_time = datetime.now()
         date_rep = repr(date_time)
         user = User()
