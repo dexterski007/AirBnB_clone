@@ -136,24 +136,37 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, arg):
         """ update the instance based on class name and id """
         args = arg.split()
+        object_dic = storage.all()
+        key = "{}.{}".format(args[0], args[1])
         if not args:
             print("** class name missing **")
-        elif args[0] not in HBNBCommand.__classes:
+            return False
+        if args[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
-        elif len(args) == 1:
+            return False
+        if len(args) == 1:
             print("** instance id missing **")
-        elif len(args) == 2:
+            return False
+        if key not in object_dic.keys():
+            print("** no instance found **")
+            return False
+        if len(args) == 2:
             print("** attribute name missing **")
-        elif len(args) == 3:
-            print("** value missing **")
-        else:
-            key = "{}.{}".format(args[0], args[1])
-            object_dic = storage.all().get(key)
-            if object_dic is None:
-                print("** no instance found **")
+            return False
+        if len(args) == 3:
+            try:
+                type(eval(args[2])) != dict
+            except NameError:
+                print("** value missing **")
+                return False
+        if len(args) == 4:
+            obj = object_dic[key]
+            if args[2] in obj.__class__.__dict__.keys():
+                vtype = type(obj.__class__.__dict__[args[2]])
+                obj.__dict__[args[2]] = vtype(args[3])
             else:
-                setattr(object_dic, args[2], args[3])
-                object_dic.save()
+                obj.__dict__[args[2]] = args[3]
+        object_dic.save()
 
 
 if __name__ == '__main__':
