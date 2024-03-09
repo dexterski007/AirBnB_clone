@@ -7,6 +7,7 @@ from models.user import User
 from time import sleep
 import os
 
+
 class TestUser_inst(unittest.TestCase):
     """ testing instantiation of user class"""
 
