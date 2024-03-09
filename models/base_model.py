@@ -1,15 +1,15 @@
 #!/usr/bin/python3
-""" Base model def """
+""" Base model definiton this is the base of everything """
 import models
 from datetime import datetime
 from uuid import uuid4
 
 
 class BaseModel:
-    """ avengers first class """
+    """ avengers first class, this is the basemodel for the entire stuff """
 
     def __init__(self, *args, **kwargs):
-        """ init function """
+        """ init function for the basemodel function, args unused + kwargs """
         self.id = str(uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
@@ -25,12 +25,12 @@ class BaseModel:
             models.storage.new(self)
 
     def save(self):
-        """ update current time """
+        """ update updated_at using the current time """
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
-        """ return a dict with values """
+        """ return a dictionary of the base model values """
         dictio = self.__dict__.copy()
         dictio["created_at"] = self.created_at.isoformat()
         dictio["updated_at"] = self.updated_at.isoformat()
@@ -38,6 +38,6 @@ class BaseModel:
         return dictio
 
     def __str__(self):
-        """ print function """
+        """ print function, its the str representation of the basemodel """
         return "[{}] ({}) {}".format(self.__class__.__name__,
                                        self.id, self.__dict__)
