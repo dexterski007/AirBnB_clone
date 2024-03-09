@@ -3,6 +3,13 @@
 
 
 import json
+from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 class FileStorage:
 	""" filestorage class """
 	__file_path = "file.json"
@@ -27,14 +34,12 @@ class FileStorage:
 
 	def reload(self):
 		""" desizerialize to objects """
-		from models.base_model import BaseModel
 		try:
 			with open(FileStorage.__file_path, 'r') as f:
 				data = json.load(f)
-				for key, obj_data in data.items():
-					class_name, obj_id = key.split('.')
-					clas = eval(class_name)
-					obj = clas(**obj_data)
-					FileStorage.__objects[key] = obj
+				for obj in data.values():
+					class_name= obj["__class__"]
+					del obj["__class__"]
+					self.new(eval(class_name)(**obj))
 		except FileNotFoundError:
-			pass
+			return
