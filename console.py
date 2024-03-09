@@ -166,7 +166,17 @@ class HBNBCommand(cmd.Cmd):
                 obj.__dict__[args[2]] = valt(args[3])
             else:
                 obj.__dict__[args[2]] = args[3]
+        elif type(eval(args[2])) == obdic:
+            obj = dico["{}.{}".format(args[0], args[1])]
+            for key, value in eval(args[2]).items():
+                if ((key in obj.__class__.__dict__[key]) and
+                    type(obj.__class__.__dict__[key]) in {str, int, float}):
+                    valt = type(obj.__class__.__dict__[key])
+                    obj.__dict__[k] = valt(value)
+                else:
+                    obj.__dict__[k] = value
         storage.save()
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
