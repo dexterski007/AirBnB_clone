@@ -34,6 +34,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, arg):
         """ EOF command ctrl + D """
+        print("")
         return True
 
     def emptyline(self):
