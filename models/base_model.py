@@ -2,7 +2,7 @@
 """ Base model definiton this is the base of everything """
 import models
 from datetime import datetime
-from uuid import uuid4
+import uuid
 
 
 class BaseModel:
@@ -13,7 +13,7 @@ class BaseModel:
         Args; unused
         kwargs: key and value
         """
-        self.id = str(uuid4())
+        self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
         if kwargs:
