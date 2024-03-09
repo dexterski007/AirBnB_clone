@@ -138,7 +138,6 @@ class HBNBCommand(cmd.Cmd):
         """ update the instance based on class name and id """
         args = arg.split()
         object_dic = storage.all()
-        key = "{}.{}".format(args[0], args[1])
         if not args:
             print("** class name missing **")
             return False
@@ -148,7 +147,7 @@ class HBNBCommand(cmd.Cmd):
         if len(args) == 1:
             print("** instance id missing **")
             return False
-        if key not in object_dic.keys():
+        if "{}.{}".format(args[0], args[1]) not in object_dic.keys():
             print("** no instance found **")
             return False
         if len(args) == 2:
@@ -161,7 +160,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** value missing **")
                 return False
         if len(args) == 4:
-            obj = storage.all()[key]
+            obj = dico["{}.{}".format(args[0], args[1])]
             if args[2] in obj.__class__.__dict__.keys():
                 valt = type(obj.__class__.__dict__[args[2]])
                 obj.__dict__[args[2]] = valt(args[3])
