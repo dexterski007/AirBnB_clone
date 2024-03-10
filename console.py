@@ -14,6 +14,7 @@ from models.place import Place
 from models.review import Review
 from shlex import split
 
+
 def argdecr(arg):
     hadina = re.search(r"\{(.*?)\}", arg)
     makouf = re.search(r"\[(.*?)\]", arg)
@@ -30,6 +31,7 @@ def argdecr(arg):
         export = [char.strip(",") for char in part]
         export.append(hadina.group())
         return export
+
 
 class HBNBCommand(cmd.Cmd):
     """ console class """
@@ -187,7 +189,8 @@ class HBNBCommand(cmd.Cmd):
             obj = object_dic["{}.{}".format(args[0], args[1])]
             for key, value in eval(args[2]).items():
                 if (key in obj.__class__.__dict__.keys() and
-                    type(obj.__class__.__dict__[key]) in {str, int, float}):
+                        type(obj.__class__.__dict__[key]) in
+                        {str, int, float}):
                     valt = type(obj.__class__.__dict__[key])
                     obj.__dict__[key] = valt(value)
                 else:
