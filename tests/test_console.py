@@ -27,8 +27,8 @@ class Test_help(unittest.TestCase):
 
     def test_h(self):
         hlp = ("Documented commands (type help <topic>):\n"
-        "========================================\n"
-        "EOF  all  count  create  destroy  help  quit  show  update")
+               "========================================\n"
+               "EOF  all  count  create  destroy  help  quit  show  update")
         with patch("sys.stdout", new=StringIO()) as f:
             self.assertFalse(HBNBCommand().onecmd("help"))
             self.assertEqual(hlp, f.getvalue().strip())
@@ -80,6 +80,7 @@ class Test_help(unittest.TestCase):
         with patch("sys.stdout", new=StringIO()) as f:
             self.assertFalse(HBNBCommand().onecmd("help update"))
             self.assertEqual(hlp, f.getvalue().strip())
+
 
 class Test_exit(unittest.TestCase):
     """ test methods for exiting the console """
@@ -652,6 +653,7 @@ class Test_all(unittest.TestCase):
             self.assertFalse(HBNBCommand().onecmd("all Review"))
             self.assertIn("Review", f.getvalue().strip())
             self.assertNotIn("BaseModel", f.getvalue().strip())
+
 
 class Test_update(unittest.TestCase):
     """ testing update function of console"""
