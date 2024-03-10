@@ -12,6 +12,7 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
+from shlex import split
 
 def argdecr(arg):
     hadina = re.search(r"\{(.*?)\}", arg)
@@ -75,7 +76,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         """ print string repr of an instance """
-        args = arg.argdecr()
+        args = argdecr(arg)
         obj_dict = storage.all()
         if not args:
             print("** class name missing **")
@@ -90,7 +91,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, arg):
         """ destroys instances based on class name and id """
-        args = arg.argdecr()
+        args = argdecr(arg)
         obj_dict = storage.all()
         if not args:
             print("** class name missing **")
@@ -106,7 +107,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """ print all string repr of all instances """
-        args = arg.argdecr()
+        args = argdecr(arg)
         if not arg:
             print([str(obj) for obj in storage.all().values()])
         elif len(args) > 0 and args[0] not in HBNBCommand.__classes:
@@ -143,7 +144,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_count(self, arg):
         """ count number of instances """
-        args = arg.argdecr()
+        args = argdecr(arg)
         c = 0
         for object_dic in storage.all().values():
             if args[0] == object_dic.__class__.__name__:
@@ -152,7 +153,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """ update the instance based on class name and id """
-        args = arg.argdecr()
+        args = argdecr(arg)
         object_dic = storage.all()
         if not args:
             print("** class name missing **")
