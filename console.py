@@ -21,14 +21,14 @@ def argdecr(arg):
         if makouf:
             part = split(arg[:makouf.span()[0]])
             export = [char.strip(",") for char in part]
-            eport.append(makouf.group())
+            export.append(makouf.group())
             return export
         else:
             return [char.strip(",") for char in split(arg)]
     else:
         part = split(arg[:hadina.span()[0]])
         export = [char.strip(",") for char in part]
-        eport.append(hadina.group())
+        export.append(hadina.group())
         return export
 
 class HBNBCommand(cmd.Cmd):
