@@ -1,0 +1,175 @@
+header {
+	z-index:2;
+	height:70px;
+	width:100%;
+	background-color:white;
+	background-image:url("../images/logo.png");
+	background-repeat: no-repeat;
+	background-size: 142px 60px;
+	background-position:center;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+
+.hamburger {
+	font-size: 2rem;
+	color:#FF5A5F;
+	font-weight:bolder;
+	margin:.5rem 0 -0.2rem 1.1rem;
+	transform:rotate(90deg);
+	display:inline-block;
+}
+
+#mainmenu:checked {
+	cursor:pointer;
+	transform: rotate(0deg);
+	color:black;
+	transition:.2s ease-in-out;
+}
+
+nav {
+	position:relative;
+	z-index:15;
+}
+
+
+input {
+	display:none;
+}
+
+.topnav1 li ul {
+	display:none;
+}
+
+.topnav1 li {
+	display:none;
+}
+
+#mainmenu:checked ~ * .topnav1 {
+	display:block;
+}
+
+#mainmenu:checked ~ * .topnav1 li {
+	display:block;
+	transform: rotate(0deg);
+	font-size:1.2rem;
+	margin:.4rem;
+	color:darkgrey;
+	font-weight:bold;
+	transition: .5s ease-in-out;
+}
+
+.topnav1 li label span:hover,
+ul li span:hover {
+	background-color:lightgray;
+	width:100%;
+	padding:.2rem 1rem;
+	border-radius:4px;
+	color:lightsalmon;
+	cursor:pointer;
+}
+
+.topnav1 {
+	width:0%;
+	height:0%;
+	border-radius:4px;
+	transition: .2s ease-in-out;
+	background-color:lightsalmon;
+}
+
+#mainmenu:checked ~ * .topnav1 {
+	display:block;
+	margin:1rem;
+	padding:.8rem;
+	flex-direction:column;
+	transition: .2s ease-in-out;
+	width:50vw;
+}
+
+.topnav2 li label span:hover,
+ul li span:hover {
+	background-color:lightgray;
+	width:100%;
+	padding:.2rem 1rem;
+	border-radius:4px;
+	color:lightsalmon;
+	cursor:pointer;
+}
+
+.topnav3 li label span:hover,
+ul li span:hover {
+	background-color:lightgray;
+	width:100%;
+	padding:.2rem 1rem;
+	border-radius:4px;
+	color:lightsalmon;
+	cursor:pointer;
+}
+
+#topnav2:checked + ul{
+  display: block;
+}
+#topnav3:checked + ul{
+  display: block;
+}
+
+
+.hamburger:hover {
+	cursor:pointer;
+	transform:scale(1.2) rotate(90deg);
+	transition:.2s ease-in-out;
+}
+
+/* Custom, iPhone Retina */ 
+@media only screen and (min-width : 320px) {
+	.filters,
+	.search-button {
+		visibility:hidden;
+	}
+	.places h1 {
+	text-align:center;
+}
+.container {
+	margin-top:-3rem;
+}
+
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+	header {
+      background-position:left;
+      background-position-x:1rem;
+}
+  .topnav {
+    display: none;
+}
+  .places h1 {
+	text-align:left;
+}
+.filters,
+.search-button {
+	visibility:visible;
+}
+.container {
+	margin-top:1rem;
+}
+
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
+}
